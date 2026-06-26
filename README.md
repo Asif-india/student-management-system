@@ -97,3 +97,6 @@ This project follows clean architecture principles with separation of concerns:
 
 - **Frontend**: Component-based architecture with clear separation of UI, business logic, and data fetching
 - **Backend**: Layered architecture with controllers, services, and models for maintainability
+
+
+## Fees Management Module (Development Branch)
