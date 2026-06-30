@@ -62,7 +62,6 @@ const StudentSchema: Schema = new Schema(
 )
 
 // Index for faster queries
-StudentSchema.index({ email: 1 })
 StudentSchema.index({ status: 1 })
 StudentSchema.index({ createdAt: -1 })
 

@@ -1,8 +1,7 @@
 // 404 Not Found middleware
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 
-export const notFound = (req: Request, res: Response, next: NextFunction): void => {
-  const error = new Error(`Not Found - ${req.originalUrl}`)
+export const notFound = (req: Request, res: Response): void => {
   res.status(404).json({
     success: false,
     message: 'Route not found',

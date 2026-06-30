@@ -64,7 +64,6 @@ const SubjectSchema: Schema = new Schema(
 )
 
 // Indexes for faster queries
-SubjectSchema.index({ code: 1 })
 SubjectSchema.index({ grade: 1 })
 SubjectSchema.index({ type: 1 })
 SubjectSchema.index({ status: 1 })

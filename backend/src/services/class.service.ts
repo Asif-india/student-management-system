@@ -1,5 +1,6 @@
 // Class service layer
-import { Class, IClass } from '../models'
+import { Class } from '../models'
+import type { IClass } from '../models'
 import { AppError } from '../utils/AppError'
 
 export class ClassService {

@@ -22,7 +22,7 @@ export class AuthService {
   static generateAccessToken(payload: TokenPayload): string {
     return jwt.sign(
       payload,
-      process.env.JWT_ACCESS_SECRET || 'your-access-secret-key',
+      process.env.JWT_ACCESS_SECRET!,
       { expiresIn: this.ACCESS_TOKEN_EXPIRY }
     )
   }
@@ -31,7 +31,7 @@ export class AuthService {
   static generateRefreshToken(payload: TokenPayload): string {
     return jwt.sign(
       payload,
-      process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key',
+      process.env.JWT_REFRESH_SECRET!,
       { expiresIn: this.REFRESH_TOKEN_EXPIRY }
     )
   }

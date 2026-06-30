@@ -20,7 +20,7 @@ declare global {
 // Authenticate middleware - verifies JWT access token
 export const authenticate = async (
   req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
@@ -51,7 +51,7 @@ export const authenticate = async (
 
 // Role-based access control middleware
 export const authorize = (...allowedRoles: UserRole[]) => {
-  return (req: Request, res: Response, next: NextFunction): void => {
+  return (req: Request, _res: Response, next: NextFunction): void => {
     if (!req.user) {
       throw new AppError('Authentication required', 401)
     }

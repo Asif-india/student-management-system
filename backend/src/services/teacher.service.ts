@@ -1,5 +1,6 @@
 // Teacher service layer
-import { Teacher, ITeacher } from '../models'
+import { Teacher } from '../models'
+import type { ITeacher } from '../models'
 import { AppError } from '../utils/AppError'
 
 export class TeacherService {

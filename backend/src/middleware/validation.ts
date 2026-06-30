@@ -4,7 +4,7 @@ import Joi from 'joi'
 import { AppError } from './errorHandler'
 
 export const validate = (schema: Joi.ObjectSchema) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     const { error } = schema.validate(req.body, {
       abortEarly: false,
       stripUnknown: true,
@@ -20,7 +20,7 @@ export const validate = (schema: Joi.ObjectSchema) => {
 }
 
 export const validateQuery = (schema: Joi.ObjectSchema) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     const { error } = schema.validate(req.query, {
       abortEarly: false,
       stripUnknown: true,
@@ -36,7 +36,7 @@ export const validateQuery = (schema: Joi.ObjectSchema) => {
 }
 
 export const validateParams = (schema: Joi.ObjectSchema) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     const { error } = schema.validate(req.params, {
       abortEarly: false,
       stripUnknown: true,

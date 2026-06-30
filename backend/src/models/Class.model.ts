@@ -75,7 +75,6 @@ const ClassSchema: Schema = new Schema(
 )
 
 // Indexes for faster queries
-ClassSchema.index({ code: 1 })
 ClassSchema.index({ grade: 1, section: 1 })
 ClassSchema.index({ academicYear: 1 })
 ClassSchema.index({ status: 1 })

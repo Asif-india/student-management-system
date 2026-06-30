@@ -1,6 +1,5 @@
 // MongoDB connection setup
 import mongoose from 'mongoose'
-import { config } from '../config'
 
 const connectDB = async (): Promise<void> => {
   try {

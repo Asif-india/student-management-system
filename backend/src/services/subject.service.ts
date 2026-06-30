@@ -1,5 +1,6 @@
 // Subject service layer
-import { Subject, ISubject } from '../models'
+import { Subject } from '../models'
+import type { ISubject } from '../models'
 import { AppError } from '../utils/AppError'
 
 export class SubjectService {

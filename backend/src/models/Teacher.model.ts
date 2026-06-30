@@ -93,8 +93,6 @@ const TeacherSchema: Schema = new Schema(
 )
 
 // Indexes for faster queries
-TeacherSchema.index({ email: 1 })
-TeacherSchema.index({ employeeId: 1 })
 TeacherSchema.index({ status: 1 })
 TeacherSchema.index({ department: 1 })
 TeacherSchema.index({ createdAt: -1 })
