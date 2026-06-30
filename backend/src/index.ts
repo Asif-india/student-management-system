@@ -55,6 +55,17 @@ app.use('/api/search', apiRateLimiter, searchRoutes)
 app.use('/api/attendance', apiRateLimiter, attendanceRoutes)
 app.use('/api/dashboard', apiRateLimiter, dashboardRoutes)
 
+// Root API endpoint
+app.get('/', (_req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Student Management System API is running',
+    version: '1.0.0',
+    environment: config.nodeEnv,
+    timestamp: new Date().toISOString(),
+  })
+})
+
 // 404 handler
 app.use(notFound)
 
@@ -65,7 +76,7 @@ app.use(errorHandler)
 const startServer = async () => {
   try {
     await connectDB()
-    
+
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`)
       console.log(`Environment: ${config.nodeEnv}`)
