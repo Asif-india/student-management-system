@@ -9,6 +9,9 @@ const connectDB = async (): Promise<void> => {
       // Mongoose 8.x doesn't require these options anymore, but keeping for compatibility
     })
 
+    console.log('Connected Database:', mongoose.connection.name)
+    console.log('Connected Host:', mongoose.connection.host)
+    console.log('Connected ReadyState:', mongoose.connection.readyState)
     console.log('MongoDB connected successfully')
     
     // Handle connection events
