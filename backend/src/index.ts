@@ -20,6 +20,11 @@ import { errorHandler, notFound } from './middleware'
 import { authRoutes, studentRoutes, teacherRoutes, classRoutes, subjectRoutes, searchRoutes, attendanceRoutes, dashboardRoutes } from './routes'
 
 const app = express()
+
+
+app.set('trust proxy', 1)
+
+
 const PORT = config.port
 
 // Security middleware
