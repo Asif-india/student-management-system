@@ -13,12 +13,21 @@ export const login = async (
   try {
     const { email, password } = req.body
 
+    console.log('========== LOGIN DEBUG ==========')
+    console.log('Login Email:', email)
+
     // Find user by email
     const user = await AuthService.findUserByEmail(email)
+
+
+
+    console.log('User Found:', !!user)
 
     if (!user) {
       throw new AppError('Invalid email or password', 401)
     }
+
+    console.log('Database Email:', user.email)
 
     // Check if user is active
     if (!user.isActive) {
@@ -27,6 +36,9 @@ export const login = async (
 
     // Compare password
     const isPasswordValid = await AuthService.comparePassword(password, user.password)
+
+
+    console.log('Password Match:', isPasswordValid)
 
     if (!isPasswordValid) {
       throw new AppError('Invalid email or password', 401)
