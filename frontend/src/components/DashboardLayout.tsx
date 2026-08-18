@@ -56,6 +56,18 @@ const DashboardLayout: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Lock body scroll when sidebar is open on mobile
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [sidebarOpen])
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value)
     setShowSearchResults(e.target.value.length >= 2)
@@ -72,7 +84,7 @@ const DashboardLayout: React.FC = () => {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-background-secondary">
+    <div className="flex min-h-[100dvh] bg-gray-50 dark:bg-background-secondary">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div
@@ -83,7 +95,7 @@ const DashboardLayout: React.FC = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-surface-primary border-r border-gray-200 dark:border-border-primary shadow-sm dark:shadow-none transform transition-transform duration-300 ease-in-out lg:fixed lg:translate-x-0 lg:flex-shrink-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 h-[100dvh] bg-white dark:bg-surface-primary border-r border-gray-200 dark:border-border-primary shadow-sm dark:shadow-none transform transition-transform duration-300 ease-in-out lg:fixed lg:translate-x-0 lg:flex-shrink-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -151,10 +163,10 @@ const DashboardLayout: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 bg-gray-50 dark:bg-background-secondary lg:ml-64">
+      <div className="flex-1 h-[100dvh] bg-gray-50 dark:bg-background-secondary lg:ml-64 overflow-hidden">
         {/* Top navbar */}
-        <header className="fixed top-0 left-0 right-0 z-40 bg-white dark:bg-surface-primary shadow-sm dark:shadow-none lg:left-64">
-          <div className="flex items-center justify-between h-14 px-4 sm:px-6 lg:px-8 border-b border-gray-200 dark:border-border-primary">
+        <header className="fixed top-0 left-0 right-0 z-40 bg-white dark:bg-surface-primary shadow-sm dark:shadow-none lg:left-64 h-14">
+          <div className="flex items-center justify-between h-full px-4 sm:px-6 lg:px-8 border-b border-gray-200 dark:border-border-primary">
             {/* Mobile menu button */}
             <button
               onClick={() => setSidebarOpen(true)}
@@ -216,7 +228,7 @@ const DashboardLayout: React.FC = () => {
         </header>
 
         {/* Page content */}
-        <main className="pt-14 overflow-y-auto">
+        <main className="h-full pt-14 overflow-y-auto">
           <div className="p-4 sm:p-6 lg:p-8">
             <Outlet />
           </div>
