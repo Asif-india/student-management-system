@@ -100,6 +100,7 @@ UserSchema.methods.comparePassword = async function (
 UserSchema.index({ role: 1 })
 UserSchema.index({ isActive: 1 })
 UserSchema.index({ createdAt: -1 })
+UserSchema.index({ refreshToken: 1 })
 
 const User = mongoose.model<IUser>('User', UserSchema)
 

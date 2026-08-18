@@ -3,7 +3,11 @@ import mongoose from 'mongoose'
 
 const connectDB = async (): Promise<void> => {
   try {
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/student-management'
+    const mongoUri = process.env.MONGODB_URI
+
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI environment variable is not set')
+    }
     
     await mongoose.connect(mongoUri, {
       // Mongoose 8.x doesn't require these options anymore, but keeping for compatibility

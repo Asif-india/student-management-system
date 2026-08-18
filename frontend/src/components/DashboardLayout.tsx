@@ -83,7 +83,7 @@ const DashboardLayout: React.FC = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-surface-primary border-r border-gray-200 dark:border-border-primary shadow-sm dark:shadow-none transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex-shrink-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-surface-primary border-r border-gray-200 dark:border-border-primary shadow-sm dark:shadow-none transform transition-transform duration-300 ease-in-out lg:fixed lg:translate-x-0 lg:flex-shrink-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -151,9 +151,9 @@ const DashboardLayout: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-gray-50 dark:bg-background-secondary">
+      <div className="flex-1 bg-gray-50 dark:bg-background-secondary lg:ml-64">
         {/* Top navbar */}
-        <header className="bg-white dark:bg-surface-primary flex-shrink-0 shadow-sm dark:shadow-none">
+        <header className="fixed top-0 left-0 right-0 z-40 bg-white dark:bg-surface-primary shadow-sm dark:shadow-none lg:left-64">
           <div className="flex items-center justify-between h-14 px-4 sm:px-6 lg:px-8 border-b border-gray-200 dark:border-border-primary">
             {/* Mobile menu button */}
             <button
@@ -216,7 +216,7 @@ const DashboardLayout: React.FC = () => {
         </header>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="pt-14 overflow-y-auto">
           <div className="p-4 sm:p-6 lg:p-8">
             <Outlet />
           </div>
